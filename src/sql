@@ -1,0 +1,57 @@
+CREATE DATABASE rpg_database;
+
+
+-- Criando as enums no PostgreSQL
+CREATE TYPE alinhamento AS ENUM (
+    'Ordeiro_Bom',
+    'Neutro_Bom',
+    'Caótico_Bom',
+    'Ordeiro_Neutro',
+    'Neutro',
+    'Caótico_Neutro',
+    'Ordeiro_Mau',
+    'Neutro_Mau',
+    'Caótico_Mau'
+);
+
+CREATE TYPE raça AS ENUM (
+    'Anão',
+    'Elfo',
+    'Meio_Elfo',
+    'Halfling',
+    'Humano',
+    'Draconato',
+    'Gnomo',
+    'Meio_Orc',
+    'Tiefling'
+);
+
+CREATE TYPE classe AS ENUM (
+    'Bárbaro',
+    'Bardo',
+    'Clérigo',
+    'Druida',
+    'Bruxo',
+    'Feiticeiro',
+    'Guardião',
+    'Guerreiro',
+    'Ladino',
+    'Mago',
+    'Monge'
+);
+
+
+-- Criando a tabela Personagem
+CREATE TABLE Personagem (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    raça raça NOT NULL,
+    classe classe NOT NULL,
+    nivel INT NOT NULL DEFAULT 0,
+    antecedente VARCHAR(100),
+    alinhamento alinhamento NOT NULL,
+    pontos_exp INT NOT NULL DEFAULT 0
+);
+
+
+select *from Personagem
